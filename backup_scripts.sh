@@ -1,5 +1,10 @@
- #!/bin/bash
+#!/bin/bash
 # backup_script.sh
+
+# Cronjob is set to automatically backup every day @ 10:00 AM
+
+# Add path so cron knows where to look for program executables
+PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
 
 # Exit on error
 set -e
@@ -16,8 +21,10 @@ cleanup() {
 }
 trap cleanup EXIT
 
+
 # Temporarily grant turbo access to pgdata
 sudo setfacl -R -m u:turbo:rwX,m:rwX "$PGDATA_PATH"
+
 
 TIMESTAMP=$(date +%Y%m%d_%H%M%S)
 BACKUP_NAME="skyportal_backup_$TIMESTAMP"
