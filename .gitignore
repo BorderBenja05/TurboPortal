@@ -28,6 +28,9 @@ skyportal_image_cache
 .vscode
 .dont
 .env
+docker.yaml
+config/docker.yaml
+backups/
 admin_scripts/.env
 
 
